@@ -2,6 +2,8 @@ from scrapy import signals
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from scrapy.http import HtmlResponse
+# from selenium.webdriver.support import expected_conditions as Expect
+# from selenium.webdriver.common.by import By
 
 class XtzxDownloaderMiddleware:
     """Scrapy middleware handling the requests using selenium"""
@@ -26,7 +28,9 @@ class XtzxDownloaderMiddleware:
     def process_request(self, request, spider):
         self.driver.implicitly_wait(30)
         self.driver.get(request.url)
-        
+        self.driver.find_elements_by_class_name('result')
+        # x = WebDriverWait(self.driver, 30).until(Expect.presence_of_element_located((By.CLASS_NAME, "result")))
+
         for cookie_name, cookie_value in request.cookies.items():
             self.driver.add_cookie(
                 {

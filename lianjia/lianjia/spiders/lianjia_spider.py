@@ -1,8 +1,6 @@
 import scrapy
 from lianjia.http import MyRequest
 from lianjia.items import LianjiaItem
-from scrapy_selenium import SeleniumRequest
-
 
 class lianjiaSpider(scrapy.Spider):
     name = "lianjia"

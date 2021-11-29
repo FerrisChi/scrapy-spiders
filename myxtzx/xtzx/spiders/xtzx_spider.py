@@ -1,8 +1,6 @@
 import scrapy
 from xtzx.http import MyRequest
 from xtzx.items import XtzxItem
-# from selenium.webdriver.support import expected_conditions as Expect
-from selenium.webdriver.common.by import By
 
 class XtzxSpider(scrapy.Spider):
     name = 'xtzx'
@@ -10,7 +8,7 @@ class XtzxSpider(scrapy.Spider):
     def start_requests(self):
         self.id = 1
         self.page = 1
-        self.max_page = 52
+        self.max_page = 5
 
         yield MyRequest(
             url=

@@ -12,12 +12,6 @@ BOT_NAME = 'lianjia'
 SPIDER_MODULES = ['lianjia.spiders']
 NEWSPIDER_MODULE = 'lianjia.spiders'
 
-# SELENIUM_DRIVER_NAME = 'chrome'
-# SELENIUM_DRIVER_EXECUTABLE_PATH = 'V:\Code\Py_projects\spiders\chromedriver.exe'
-# SELENIUM_DRIVER_ARGUMENTS=['--headless','--ignore-certificate-errors-spki-list', 'log-level=3']
-# DOWNLOADER_MIDDLEWARES = {
-    # 'scrapy_selenium.SeleniumMiddleware': 800
-    # }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'lianjia (+http://www.yourdomain.com)'
