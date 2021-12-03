@@ -4,7 +4,7 @@ from lianjia.items import LianjiaItem
 
 class lianjiaSpider(scrapy.Spider):
     name = "lianjia"
-    max_page = 1
+    max_page = 5
     id = 1
     start_urls = [
         "https://bj.lianjia.com/ershoufang/xicheng/",

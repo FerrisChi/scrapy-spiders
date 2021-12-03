@@ -4,10 +4,13 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import csv
+# useful for handling different item types with a single interface
+# from itemadapter import ItemAdapter
 
-class XtzxPipeline:
+
+class LianjiaPipeline:
     items = []
-    header = ['id', 'page', 'course_name', 'teachers', 'school', 'number']
+    header = ['name', 'location0','location1', 'location2', 'type', 'size', 'perunit', 'price']
 
     def open_spider(self, spider):
         try:

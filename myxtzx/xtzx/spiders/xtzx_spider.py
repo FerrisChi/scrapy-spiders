@@ -8,7 +8,7 @@ class XtzxSpider(scrapy.Spider):
     def start_requests(self):
         self.id = 1
         self.page = 1
-        self.max_page = 5
+        self.max_page = 52
 
         yield MyRequest(
             url=
@@ -54,6 +54,7 @@ class XtzxSpider(scrapy.Spider):
             self.page += 1
             nxt_url = f'https://www.xuetangx.com/search?query=&org=&classify=1&type=&status=&page={self.page}'
             # Expect.title_is("学堂在线 - 精品在线课程学习平台")
+
             yield MyRequest(url=nxt_url,
                             callback=self.parse,
                             dont_filter=True)
