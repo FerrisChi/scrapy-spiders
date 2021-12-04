@@ -17,6 +17,10 @@ for i in tqdm(range(len(df['No']))):
         sum += int(df['PM_Dongsi'][i])
         count += 1
 
+    if not (df['PM_Nongzhanguan'][i] is np.nan):
+        sum += int(df['PM_Nongzhanguan'][i])
+        count += 1
+
     try:
         df.loc[i, 'PM_AVG'] = round(sum / count, 2)
     except:
@@ -26,6 +30,10 @@ df['year'] = df['year'].astype('int')
 df['month'] = df['month'].astype('int')
 df['TEMP_AVG'] = df['TEMP'].astype('float')
 
-newdf = df.groupby(by=['year', 'month']).agg({'PM_AVG': 'mean', 'TEMP_AVG': 'mean'}, sort=True)
-newdf.to_csv('result.csv', float_format='%.4f', encoding = 'utf-8')
+newdf = df.groupby(by=['year', 'month']).agg(
+    {
+        'PM_AVG': 'mean',
+        'TEMP_AVG': 'mean'
+    }, sort=True)
+newdf.to_csv('result.csv', float_format='%.4f', encoding='utf-8')
 print(newdf)
