@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+from matplotlib import pyplot as plt
 
 df = pd.read_csv('BeijingPM20100101_20151231.csv', encoding='utf-8', dtype=str)
 print(df.info())
@@ -37,3 +38,6 @@ newdf = df.groupby(by=['year', 'month']).agg(
     }, sort=True)
 newdf.to_csv('result.csv', float_format='%.4f', encoding='utf-8')
 print(newdf)
+
+newdf.plot()
+plt.savefig('result.png')

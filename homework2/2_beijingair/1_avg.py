@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+from matplotlib import pyplot as plt
 
 df = pd.read_csv('BeijingPM20100101_20151231.csv', encoding='utf-8', dtype=str)
 
@@ -27,3 +28,6 @@ for i in tqdm(range(len(df['No']))):
 
 df = df.groupby("year").mean()
 print(df)
+
+df.plot()
+plt.savefig('result.png')
