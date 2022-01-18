@@ -4,22 +4,32 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 # useful for handling different item types with a single interface
+from itemadapter import ItemAdapter
 import csv
 
 
-class CovidPipeline:
-
+# header = [
+#         '2021.12.{}'.format(day) for day in range(9,24)
+#     ]
+class WrdataPipeline:
     header = [
-        'id', 'country', 'total_cases', 'new_cases', 'total_deaths',
-        'new_deaths', 'total_recovered', 'new_recovered', 'active_cases',
-        'serious_critical', 'total_cases_per_1M', 'deaths', 'total_tests', 'tesets',
-        'population'
+        'country',
+        'day',
+        # 'confirmedcases'
+        # 'confirmedcases_ratio'
+        # 'confirmedcases_perday'
+        # 'confirmeddeath'
+        # 'vaccinated'
+        'confirmeddeath_ratio'
     ]
     items = []
 
     def open_spider(self, spider):
         try:
-            self.file = open('result.csv', "w", encoding="utf-8", newline='')
+            self.file = open('confirmed_death_ratio.csv',
+                             "w",
+                             encoding="utf-8",
+                             newline='')
         except Exception as err:
             print(err)
         self.f_csv = csv.DictWriter(self.file, self.header)

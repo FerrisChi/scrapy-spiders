@@ -18,13 +18,14 @@ class covidSpider(scrapy.Spider):
         # response -- click yesterday
         tableyesterday = response.xpath(
             '/html/body/div[3]/div[3]/div/div[6]/div[2]/div/table')
+        # tableyesterday2 = response.xpath(
+        #     '/html/body/div[3]/div[3]/div/div[6]/div[3]/div/table')
         thead = tableyesterday.xpath('./thead')
         tbody = tableyesterday.xpath('./tbody[1]')
         # /html/body/div[3]/div[3]/div/div[6]/div[2]/div/table/tbody[3]
         ttail = tableyesterday.xpath('./tbody[3]')
 
         lines = tbody.xpath('./tr[@class="odd" or @class="even"]')
-
         cnt = 0
         for line in lines:
             try:
@@ -108,10 +109,10 @@ class covidSpider(scrapy.Spider):
                     pass
 
                 try:
-                    item['total_cases'] = line.xpath('./td[11]/text()').get()
-                    if item['total_cases'] is not None:
-                        item['total_cases'] = int(
-                            item['total_cases'].strip().replace(',', ''))
+                    item['total_cases_per_1M'] = line.xpath('./td[11]/text()').get()
+                    if item['total_cases_per_1M'] is not None:
+                        item['total_cases_per_1M'] = int(
+                            item['total_cases_per_1M'].strip().replace(',', ''))
                 except:
                     pass
 
